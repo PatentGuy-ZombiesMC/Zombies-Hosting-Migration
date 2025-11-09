@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombies Hosting - We've Moved!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a1f0a 0%, #152815 100%);
+            color: #e8f5e9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            padding: 50px 40px;
+            background: rgba(18, 40, 18, 0.85);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo-container {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .logo {
+            max-width: 320px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.4));
+            transition: transform 0.5s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.03);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #4caf50;
+            text-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #b8e6b8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .migration-box {
+            background: rgba(30, 60, 30, 0.6);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #2a5a2a 0%, #1e3e1e 100%);
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #8bc34a;
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+            letter-spacing: 1px;
+        }
+        
+        .domain-container {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(40, 80, 40, 0.4);
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .old-domain {
+            font-size: 1.2rem;
+            color: #b8e6b8;
+            margin-bottom: 10px;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .arrow {
+            font-size: 1.5rem;
+            color: #4caf50;
+            margin: 10px 0;
+        }
+        
+        .new-domain {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4caf50;
+            text-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+            margin-top: 10px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin: 25px 0;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #2a5a2a 0%, #4caf50 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #4caf50 0%, #2a5a2a 100%);
+        }
+        
+        .auto-redirect {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #b8e6b8;
+        }
+        
+        .countdown {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4caf50;
+            margin-top: 5px;
+        }
+        
+        .contact {
+            margin-top: 40px;
+            font-size: 1.1rem;
+            color: #b8e6b8;
+        }
+        
+        .contact a {
+            color: #4caf50;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact a:hover {
+            color: #8bc34a;
+            text-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(40, 80, 40, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8bc34a;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        
+        .social-icon:hover {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Animated background elements */
+        .bg-zombie {
+            position: fixed;
+            font-size: 8rem;
+            opacity: 0.03;
+            z-index: 1;
+            animation: float 20s infinite linear;
+        }
+        
+        .zombie-1 {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .zombie-2 {
+            top: 70%;
+            right: 8%;
+            animation-delay: -5s;
+        }
+        
+        .zombie-3 {
+            bottom: 15%;
+            left: 10%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(76, 175, 80, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .logo {
+                max-width: 250px;
+            }
+            
+            .new-domain {
+                font-size: 1.7rem;
+            }
+            
+            .bg-zombie {
+                font-size: 5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .logo {
+                max-width: 200px;
+            }
+            
+            .new-domain {
+                font-size: 1.5rem;
+            }
+            
+            .migration-box {
+                padding: 20px 15px;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background zombie elements -->
+    <div class="bg-zombie zombie-1">🧟</div>
+    <div class="bg-zombie zombie-2">🧟</div>
+    <div class="bg-zombie zombie-3">🧟</div>
+    
+    <div class="container">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/mCrH75d6/zombieshosting.png" alt="Zombies Hosting Logo" class="logo">
+        </div>
+        
+        <h1>WE'VE MOVED DOMAINS!</h1>
+        
+        <p class="subtitle">Our hosting services have risen to a new location</p>
+        
+        <div class="migration-box">
+            <div class="status pulse">DOMAIN MIGRATION COMPLETE</div>
+            
+            <div class="domain-container">
+                <div class="old-domain">zombieshosting.com</div>
+                <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="new-domain">zombieshosting.net</div>
+            </div>
+            
+            <p>We've migrated to a new domain to serve you better. Please update your bookmarks and links.</p>
+            
+            <a href="https://zombieshosting.net" class="cta-button">
+                <i class="fas fa-external-link-alt"></i> 
+                GO TO NEW WEBSITE
+            </a>
+            
+            <div class="auto-redirect">
+                <p>You will be automatically redirected in <span class="countdown" id="countdown">10</span> seconds</p>
+            </div>
+        </div>
+        
+        <div class="contact">
+            <p>Questions about the migration? Contact our support team:</p>
+            <a href="mailto:support@zombieshosting.net">
+                <i class="fas fa-envelope"></i>
+                support@zombieshosting.net
+            </a>
+        </div>
+        
+        <div class="social-links">
+            <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown and auto-redirect
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdownElement = document.getElementById('countdown');
+            let seconds = 10;
+            
+            function updateCountdown() {
+                countdownElement.textContent = seconds;
+                
+                if (seconds === 0) {
+                    // Redirect to new domain
+                    window.location.href = "https://zombieshosting.net";
+                } else {
+                    seconds--;
+                }
+            }
+            
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
+            
+            // Add interactive hover effects
+            const socialIcons = document.querySelectorAll('.social-icon');
+            socialIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.1)';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
